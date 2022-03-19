@@ -1,0 +1,28 @@
+{
+  "materials": [
+{
+    "materialName": "front",
+    "mapFileIndex": 1,
+    "roughnessMapFileIndex":3,
+    "metalnessMapFileIndex":3,
+    "default3dCharacteristics": ["defaultmetallic"],
+    "materialSelection":[]
+  },
+{
+    "materialName": "back",
+    "mapFileIndex": 2,
+    "roughnessMapFileIndex":4,
+    "metalnessMapFileIndex":4,
+    "default3dCharacteristics": ["defaultmetallic"],
+    "materialSelection":[]
+  }
+],
+  "runAnimation":false,
+  "sceneBackground": "ffffff",
+  "tilt": { "x": 0, "y": 0, "z": 0 },	
+  "lightingColor": "ffffff",
+  "lightingBrightness": 2, 
+  "rotationSpeed": 6,
+  "addSurroundingLights": false,
+  "padding":40
+}

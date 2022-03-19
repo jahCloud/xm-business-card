@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.80.75 commit date:2019-07-29, commit time:14:47, hash:f6cb5f54494e</authoring_tool>
+    </contributor>
+    <created>2019-10-25T17:00:25</created>
+    <modified>2019-10-25T17:00:25</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="front-effect">
+      <profile_COMMON>
+        <newparam sid="BcardFront_png-surface">
+          <surface type="2D">
+            <init_from>BcardFront_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="BcardFront_png-sampler">
+          <sampler2D>
+            <source>BcardFront_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="BcardFront_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="back-effect">
+      <profile_COMMON>
+        <newparam sid="BcardBack_png-surface">
+          <surface type="2D">
+            <init_from>BcardBack_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="BcardBack_png-sampler">
+          <sampler2D>
+            <source>BcardBack_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="BcardBack_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="BcardBack_png" name="BcardBack_png">
+      <init_from>BcardBack.png</init_from>
+    </image>
+    <image id="BcardFront_png" name="BcardFront_png">
+      <init_from>BcardFront.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="front-material" name="front">
+      <instance_effect url="#front-effect"/>
+    </material>
+    <material id="back-material" name="back">
+      <instance_effect url="#back-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Plane-mesh" name="Plane">
+      <mesh>
+        <source id="Plane-mesh-positions">
+          <float_array id="Plane-mesh-positions-array" count="36">-1 -1 0 1 -1 0 -1 1 0 1 1 0 -1 -1 0 1 -1 0 -1 1 0 1 1 0 -1 -1 0.5 1 -1 0.5 -1 1 0.5 1 1 0.5</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-positions-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-normals">
+          <float_array id="Plane-mesh-normals-array" count="18">0 0 -1 1 0 0 0 0 1 -1 0 0 0 1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane-mesh-map-0">
+          <float_array id="Plane-mesh-map-0-array" count="120">1 1 0 0 1 0 1 1 1 0 1 0 1 0 0 0 0 0 1 1 1 0 1 0 0 0 0 1 0 1 0 1 1 1 1 1 1 0 0 1 0 0 0 0 0 1 0 1 0 1 1 1 1 1 1 0 0 0 0 0 1 1 0 1 0 0 1 1 1 1 1 0 1 0 1 0 0 0 1 1 1 1 1 0 0 0 0 0 0 1 0 1 0 1 1 1 1 0 1 1 0 1 0 0 0 0 0 1 0 1 0 1 1 1 1 0 1 0 0 0</float_array>
+          <technique_common>
+            <accessor source="#Plane-mesh-map-0-array" count="60" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Plane-mesh-vertices">
+          <input semantic="POSITION" source="#Plane-mesh-positions"/>
+        </vertices>
+        <triangles material="front-material" count="18">
+          <input semantic="VERTEX" source="#Plane-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane-mesh-map-0" offset="2" set="0"/>
+          <p>7 1 3 9 1 4 5 1 5 1 2 6 4 2 7 0 2 8 3 2 9 5 2 10 1 2 11 0 2 12 6 2 13 2 2 14 2 2 15 7 2 16 3 2 17 9 2 18 10 2 19 8 2 20 4 3 21 10 3 22 6 3 23 6 4 24 11 4 25 7 4 26 5 5 27 8 5 28 4 5 29 7 1 33 11 1 34 9 1 35 1 2 36 5 2 37 4 2 38 3 2 39 7 2 40 5 2 41 0 2 42 4 2 43 6 2 44 2 2 45 6 2 46 7 2 47 9 2 48 11 2 49 10 2 50 4 3 51 8 3 52 10 3 53 6 4 54 10 4 55 11 4 56 5 5 57 9 5 58 8 5 59</p>
+        </triangles>
+        <triangles material="back-material" count="2">
+          <input semantic="VERTEX" source="#Plane-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Plane-mesh-map-0" offset="2" set="0"/>
+          <p>2 0 0 1 0 1 0 0 2 2 0 30 3 0 31 1 0 32</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Plane" name="Plane" type="NODE">
+        <matrix sid="transform">45 0 0 0 0 -1.09278e-6 -1 0 0 25 -4.37114e-8 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane-mesh" name="Plane">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="front-material" target="#front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="back-material" target="#back-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
